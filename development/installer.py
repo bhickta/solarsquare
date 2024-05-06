@@ -41,7 +41,7 @@ def get_args_parser():
         action="store",
         type=str,
         help="Path to apps.json, default: apps-example.json",
-        default="apps-example.json",
+        default="apps.json",
     )  # noqa: E501
     parser.add_argument(
         "-b",
@@ -72,8 +72,8 @@ def get_args_parser():
         "--frappe-branch",
         action="store",
         type=str,
-        help="frappe repo to use, default: version-15",  # noqa: E501
-        default="version-15",
+        help="frappe repo to use, default: version-14",  # noqa: E501
+        default="version-14",
     )
     parser.add_argument(
         "-p",
