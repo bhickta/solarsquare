@@ -1,5 +1,16 @@
 version: "3.7"
 services:
+  postgress:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 1212
+      POSTGRES_USER: root
+      POSTGRES_DB: default
+
   mariadb:
     image: docker.io/mariadb:10.6
     command:
@@ -9,6 +20,8 @@ services:
       - --skip-innodb-read-only-compressed # Temporary fix for MariaDB 10.6
     environment:
       MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - 3306:3306
     volumes:
       - mariadb-data:/var/lib/mysql
 
@@ -49,7 +62,8 @@ services:
     volumes:
       - ..:/workspace:cached
       # Enable if you require git cloning
-      # - ${HOME}/.ssh:/home/frappe/.ssh
+      - ${HOME}/.ssh:/home/frappe/.ssh
+      - ${HOME}/development/solarsquare/backup:/home/frappe/backup
     working_dir: /workspace/development
     ports:
       - 8000-8005:8000-8005
