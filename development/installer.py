@@ -73,7 +73,7 @@ def get_args_parser():
         action="store",
         type=str,
         help="frappe repo to use, default: version-14",  # noqa: E501
-        default="version-14",
+        default="version-15",
     )
     parser.add_argument(
         "-p",
